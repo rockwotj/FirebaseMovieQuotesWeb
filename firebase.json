@@ -1,0 +1,9 @@
+{
+  "firebase": "rockwotj-moviequotes",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

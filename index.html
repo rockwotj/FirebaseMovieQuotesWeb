@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="moviequotes">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>MovieQuotes</title>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+ <link rel="stylesheet" href="/css/moviequotes.css">
+
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+ <script src="//cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+ <script src="//cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+ <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+ <script src="/js/app.js"></script>
+ <script src="/js/modal-controllers.js"></script>
+</head>
+<body ng-controller="MoviequotesCtrl as moviequotes">
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-click="moviequotes.navbarCollapsed = !moviequotes.navbarCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">MovieQuotes</a>
+      </div>
+      <div collapse="moviequotes.navbarCollapsed" class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a ng-click="moviequotes.showInsertQuoteDialog()" href="#">Add Quote</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ng-model="moviequotes.isEditing" ng-click="moviequotes.navbarCollapsed = true" btn-checkbox href="#">{{moviequotes.isEditing ? "Done" : "Edit"}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="table-wrapper">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Quote</th>
+            <th>Movie</th>
+            <th ng-show="moviequotes.isEditing">Edits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="moviequote in moviequotes.items">
+            <td>{{moviequote.quote}}</td>
+            <td>{{moviequote.movie}}</td>
+            <td ng-show="moviequotes.isEditing" class="edit-actions">
+              <button ng-click="moviequotes.showInsertQuoteDialog(moviequote)" type="button" class="btn btn-xs btn-success">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+              <button ng-click="moviequotes.showDeleteQuoteDialog(moviequote)" type="button" class="btn btn-xs btn-danger">
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

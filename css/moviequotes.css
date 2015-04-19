@@ -1,0 +1,22 @@
+body {
+  padding-top: 70px;
+}
+
+/* Only use table-wrapper on screen >800px. */
+@media (min-width: 800px) {
+  .table-wrapper {
+    padding: 10px 30px 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: #ddd 2px 2px 0px;
+  }
+}
+
+th {
+  font-size: 1.5em;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 70px;
+}
