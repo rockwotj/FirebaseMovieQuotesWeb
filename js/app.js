@@ -5,10 +5,17 @@
     this.navbarCollapsed = true;
     var ref = new Firebase("https://rockwotj-moviequotes.firebaseio.com/quotes");
     this.items = $firebaseArray(ref);
+    
+    var compare = function(a, b) {
+      return a.$id < b.$id
+    }
+    this.items.sort(compare);
+    var _this = this;
+    this.items.$watch(function(){ _this.items.sort(compare); });
 
     this.showInsertQuoteDialog = function(movieQuoteFromRow) {
       this.navbarCollapsed = true;
-      var movieQuotesCtrl = this;
+      var _this = this;
       var modalInstance = $modal.open({
         templateUrl : "/partials/insertQuoteModal.html",
         controller : "InsertQuoteModalCtrl",
@@ -22,7 +29,7 @@
              },
              save :
                function(movieQuoteFromModal) {
-                 movieQuotesCtrl.items.$save(movieQuoteFromModal);
+                 _this.items.$save(movieQuoteFromModal);
              }
            };
           }
@@ -31,9 +38,9 @@
       modalInstance.result.then(function(movieQuoteFromModal) {
        console.log(movieQuoteFromModal);
         if (movieQuoteFromModal) {
-          movieQuotesCtrl.items.$add(movieQuoteFromModal);
+          _this.items.$add(movieQuoteFromModal);
         }
-        movieQuotesCtrl.isEditing = false;
+        _this.isEditing = false;
       });
     };
 
@@ -48,10 +55,10 @@
           }
         }
       });
-      var movieQuotesCtrl = this;
+      var _this = this;
       modalInstance.result.then(function(movieQuoteFromModal) {
-        movieQuotesCtrl.items.$remove(movieQuoteFromModal);
-        movieQuotesCtrl.isEditing = false;
+        _this.items.$remove(movieQuoteFromModal);
+        _this.isEditing = false;
       });
     };
   });
