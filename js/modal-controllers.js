@@ -5,17 +5,17 @@
   app.controller("InsertQuoteModalCtrl", function ($modalInstance, $timeout, movieQuote) {
     this.isNewQuote = movieQuote.get() == undefined;
     this.moviequote = movieQuote.get() || {quote:"", movie:""};
-    var insertQuoteModal = this;
+    var _this = this;
     if (!this.isNewQuote) {
       this.saveQuote = function() {
-       movieQuote.save(insertQuoteModal.moviequote);
+       movieQuote.save(_this.moviequote);
       };
     } else {
       this.saveQuote = function() {};
     }
     this.insertQuote = function () {
-      if (insertQuoteModal.isNewQuote) {
-       $modalInstance.close(insertQuoteModal.moviequote);
+      if (_this.isNewQuote) {
+       $modalInstance.close(_this.moviequote);
       } else {
        $modalInstance.close();
       }
