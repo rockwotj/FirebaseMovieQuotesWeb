@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="insertModal.cancel()" aria-hidden="true">&times;</button>
+  <h4 class="modal-title">Add a MovieQuote</h4>
+</div>
+
+<form name="insertQuoteForm" class="form-horizontal" ng-submit="insertModal.insertQuote()">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="quote-input" class="col-sm-2 control-label">Quote:</label>
+      <div class="col-sm-10">
+        <input ng-model="insertModal.moviequote.quote" id="quote-input" type="text" class="form-control" placeholder="Quote">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="movie-input" class="col-sm-2 control-label">Movie: </label>
+      <div class="col-sm-10">
+        <input ng-model="insertModal.moviequote.movie" id="movie-input" type="text" class="form-control" placeholder="Title">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="insertModal.cancel()">Cancel</button>
+    <button type="submit" class="btn btn-primary">Add Quote</button>
+  </div>
+</form>
