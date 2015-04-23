@@ -43,7 +43,7 @@
         }
       });
 
-      modalInstance.result.then(function(movieQuoteFromModal) {
+      modalInstance.result.then(function() {
         _this.isEditing = false;
       });
     };
