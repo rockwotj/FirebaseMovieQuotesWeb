@@ -3,43 +3,47 @@
 
   app.controller("MoviequotesCtrl", function($scope, $modal, $firebaseArray) {
     this.navbarCollapsed = true;
-    var ref = new Firebase("https://rockwotj-moviequotes.firebaseio.com/quotes");
-    this.items = $firebaseArray(ref);
-    
-    var compare = function(a, b) {
-      return a.$id < b.$id
-    }
-    this.items.sort(compare);
-    var _this = this;
-    this.items.$watch(function(){ _this.items.sort(compare); });
+    //TODO: Bind data to Firebase
+    this.items = [];
 
-    this.showInsertQuoteDialog = function(movieQuoteFromRow) {
+  this.showAddQuoteDialog = function(movieQuoteFromRow) {
+    this.navbarCollapsed = true;
+    var _this = this;
+    var modalInstance = $modal.open({
+      templateUrl : "/partials/addQuoteModal.html",
+      controller : "AddQuoteModalCtrl",
+      controllerAs : "insertModal"
+    });
+    modalInstance.result.then(function(movieQuoteFromModal) {
+      //TODO: Add movieQuote to Firebase
+      _this.isEditing = false;
+    });
+  };
+
+    this.showUpdateQuoteDialog = function(movieQuoteFromRow) {
       this.navbarCollapsed = true;
       var _this = this;
       var modalInstance = $modal.open({
-        templateUrl : "/partials/insertQuoteModal.html",
-        controller : "InsertQuoteModalCtrl",
+        templateUrl : "/partials/updateQuoteModal.html",
+        controller : "UpdateQuoteModalCtrl",
         controllerAs : "insertModal",
         resolve : {
           movieQuote : function() {
-           return {
-             get :
-               function() {
-                 return movieQuoteFromRow;
-             },
-             save :
-               function(movieQuoteFromModal) {
-                 _this.items.$save(movieQuoteFromModal);
-             }
-           };
+            return {
+              get :
+                function() {
+                  return movieQuoteFromRow;
+              },
+              save :
+                function(movieQuoteFromModal) {
+                  //TODO: save movieQuote to Firebase
+              }
+            };
           }
         }
       });
+
       modalInstance.result.then(function(movieQuoteFromModal) {
-       console.log(movieQuoteFromModal);
-        if (movieQuoteFromModal) {
-          _this.items.$add(movieQuoteFromModal);
-        }
         _this.isEditing = false;
       });
     };
@@ -57,13 +61,9 @@
       });
       var _this = this;
       modalInstance.result.then(function(movieQuoteFromModal) {
-        _this.items.$remove(movieQuoteFromModal);
+        //TODO: Delete the moviequote from Firebase
         _this.isEditing = false;
       });
     };
   });
-
-  app.run(function() {
-  });
-
 })();
