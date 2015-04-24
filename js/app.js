@@ -1,7 +1,7 @@
 (function() {
   var app = angular.module("moviequotes", [ "ui.bootstrap", "modal-controllers" ]);
 
-  app.controller("MoviequotesCtrl", function($scope, $modal, $firebaseArray) {
+  app.controller("MoviequotesCtrl", function($scope, $modal) {
     this.navbarCollapsed = true;
     //TODO: Bind data to Firebase
     this.items = [];
