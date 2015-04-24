@@ -3,12 +3,12 @@
 
   app.controller("MoviequotesCtrl", function($scope, $modal) {
     this.navbarCollapsed = true;
+    var _this = this;
     //TODO: Bind data to Firebase
     this.items = [];
 
   this.showAddQuoteDialog = function(movieQuoteFromRow) {
     this.navbarCollapsed = true;
-    var _this = this;
     var modalInstance = $modal.open({
       templateUrl : "/partials/addQuoteModal.html",
       controller : "AddQuoteModalCtrl",
@@ -22,7 +22,6 @@
 
     this.showUpdateQuoteDialog = function(movieQuoteFromRow) {
       this.navbarCollapsed = true;
-      var _this = this;
       var modalInstance = $modal.open({
         templateUrl : "/partials/updateQuoteModal.html",
         controller : "UpdateQuoteModalCtrl",
@@ -59,7 +58,6 @@
           }
         }
       });
-      var _this = this;
       modalInstance.result.then(function(movieQuoteFromModal) {
         //TODO: Delete the moviequote from Firebase
         _this.isEditing = false;
