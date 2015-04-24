@@ -29,7 +29,7 @@
       </div>
       <div collapse="moviequotes.navbarCollapsed" class="navbar-collapse">
         <ul class="nav navbar-nav navbar-left">
-          <li><a ng-click="moviequotes.showInsertQuoteDialog()" href="#">Add Quote</a></li>
+          <li><a ng-click="moviequotes.showAddQuoteDialog()" href="#">Add Quote</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a ng-model="moviequotes.isEditing" ng-click="moviequotes.navbarCollapsed = true" btn-checkbox href="#">{{moviequotes.isEditing ? "Done" : "Edit"}}</a></li>
@@ -53,7 +53,7 @@
             <td>{{moviequote.quote}}</td>
             <td>{{moviequote.movie}}</td>
             <td ng-show="moviequotes.isEditing" class="edit-actions">
-              <button ng-click="moviequotes.showInsertQuoteDialog(moviequote)" type="button" class="btn btn-xs btn-success">
+              <button ng-click="moviequotes.showUpdateQuoteDialog(moviequote)" type="button" class="btn btn-xs btn-success">
                 <span class="glyphicon glyphicon-pencil"></span>
               </button>
               <button ng-click="moviequotes.showDeleteQuoteDialog(moviequote)" type="button" class="btn btn-xs btn-danger">
