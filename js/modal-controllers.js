@@ -2,7 +2,7 @@
 (function() {
   var app = angular.module("modal-controllers", [ "ui.bootstrap"]);
 
-  app.controller("AddQuoteModalCtrl", function ($modalInstance, $timeout, movieQuote) {
+  app.controller("AddQuoteModalCtrl", function ($modalInstance, $timeout) {
     this.moviequote = {quote:"", movie:""};
     var _this = this;
     this.insertQuote = function () {
