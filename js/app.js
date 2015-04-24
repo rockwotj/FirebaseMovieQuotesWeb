@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module("moviequotes", [ "ui.bootstrap", "modal-controllers", "firebase" ]);
+  var app = angular.module("moviequotes", [ "ui.bootstrap", "modal-controllers" ]);
 
   app.controller("MoviequotesCtrl", function($scope, $modal, $firebaseArray) {
     this.navbarCollapsed = true;
