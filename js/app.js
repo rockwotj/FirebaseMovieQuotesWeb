@@ -1,10 +1,16 @@
 (function() {
-  var app = angular.module("moviequotes", [ "ui.bootstrap", "modal-controllers" ]);
+  var app = angular.module("moviequotes", [ "ui.bootstrap", "modal-controllers", "firebase" ]);
 
-  app.controller("MoviequotesCtrl", function($scope, $modal) {
+  app.controller("MoviequotesCtrl", function($scope, $modal, $firebaseArray) {
     this.navbarCollapsed = true;
-    //TODO: Bind data to Firebase
-    this.items = [];
+    //Done: Bind data to Firebase
+    var moviequotesRef = new Firebase("https://rockwotj-moviequotes.firebaseio.com/quotes");
+    this.items = $firebaseArray(moviequotesRef);
+
+    var compare = function(a, b) {
+      return a.$id < b.$id;
+    }
+    this.items.$watch(this.items.sort(compare));
 
   this.showAddQuoteDialog = function(movieQuoteFromRow) {
     this.navbarCollapsed = true;
@@ -15,7 +21,8 @@
       controllerAs : "insertModal"
     });
     modalInstance.result.then(function(movieQuoteFromModal) {
-      //TODO: Add movieQuote to Firebase
+      //Done: Add movieQuote to Firebase
+      _this.items.$add(movieQuoteFromModal);
       _this.isEditing = false;
     });
   };
@@ -36,7 +43,8 @@
               },
               save :
                 function(movieQuoteFromModal) {
-                  //TODO: save movieQuote to Firebase
+                  //Done: save movieQuote to Firebase
+                  _this.items.$save(movieQuoteFromModal);
               }
             };
           }
@@ -61,7 +69,8 @@
       });
       var _this = this;
       modalInstance.result.then(function(movieQuoteFromModal) {
-        //TODO: Delete the moviequote from Firebase
+        //Done: Delete the moviequote from Firebase
+        _this.items.$remove(movieQuoteFromModal);
         _this.isEditing = false;
       });
     };
