@@ -5,7 +5,7 @@
     this.navbarCollapsed = true;
     var _this = this;
     //Done: Bind data to Firebase
-    var moviequotesRef = new Firebase("https://rockwotj-moviequotes.firebaseio.com/quotes");
+    var moviequotesRef = new Firebase("https://<YOUR-USERNAME>-movie-quotes.firebaseio.com/quotes");
     this.items = $firebaseArray(moviequotesRef);
 
     var compare = function(a, b) {
