@@ -1,2 +1,2 @@
 # FirebaseMovieQuotesWeb
-This was created as a [follow along lesson](https://drive.google.com/open?id=1LDDrnTfJcAJuWB3cxz_FsfW6K6YnwfY9acqVFsgppzk&authuser=0).
+This was created as a [follow along lesson](https://docs.google.com/presentation/d/1jB9wdoEDmbB_MxSlWrl1Bs65JLuasKBzfXumtoKd5Yw/edit#slide=id.g2e200109_1_0).
