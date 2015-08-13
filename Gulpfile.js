@@ -16,7 +16,7 @@ gulp.task('html', function() {
 gulp.task('css', function() {
   return gulp.src('src/css/*.css')
              .pipe(cssmin())
-	     .pipe(rename({suffix: '.min'}))
+	           .pipe(rename({suffix: '.min'}))
              .pipe(gulp.dest('dist/css'));
 });
 
