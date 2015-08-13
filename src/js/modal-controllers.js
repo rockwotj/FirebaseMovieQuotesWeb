@@ -2,7 +2,7 @@
 (function() {
   var app = angular.module("modal-controllers", [ "ui.bootstrap"]);
 
-  app.controller("AddQuoteModalCtrl", function ($modalInstance, $timeout) {
+  app.controller("AddQuoteModalCtrl", ["$modalInstance", "$timeout", function ($modalInstance, $timeout) {
     this.moviequote = {quote:"", movie:""};
     var _this = this;
     this.insertQuote = function () {
@@ -19,9 +19,9 @@
         document.querySelector("#quote-input").focus();
       }, 100);
     });
-  });
+  }]);
 
-  app.controller("UpdateQuoteModalCtrl", function ($modalInstance, $timeout, movieQuote) {
+  app.controller("UpdateQuoteModalCtrl", ["$modalInstance", "$timeout", "movieQuote", function ($modalInstance, $timeout, movieQuote) {
     this.moviequote = movieQuote.get();
     var _this = this;
     this.saveQuote = function() {
@@ -38,9 +38,9 @@
         document.querySelector("#quote-input").focus();
       }, 100);
     });
-  });
+  }]);
 
-	app.controller("DeleteQuoteModalCtrl", function ($modalInstance, movieQuoteInModal) {
+	app.controller("DeleteQuoteModalCtrl", ["$modalInstance", "movieQuoteInModal", function ($modalInstance, movieQuoteInModal) {
 	  this.deleteQuote = function () {
 	    $modalInstance.close(movieQuoteInModal);
 	  };
@@ -48,6 +48,6 @@
 	  this.cancel = function () {
 	     $modalInstance.dismiss("cancel");
 	  };
-	});
+	}]);
 
 })();

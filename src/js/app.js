@@ -1,7 +1,7 @@
 (function() {
   var app = angular.module("moviequotes", [ "ui.bootstrap", "modal-controllers" ]);
 
-  app.controller("MoviequotesCtrl", function($scope, $modal) {
+  app.controller("MoviequotesCtrl", ['$scope', '$modal', function($scope, $modal) {
     this.navbarCollapsed = true;
     var _this = this;
     //TODO: Bind data to Firebase
@@ -63,5 +63,5 @@
         _this.isEditing = false;
       });
     };
-  });
+  }]);
 })();
