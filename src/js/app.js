@@ -4,7 +4,6 @@
   app.controller("MoviequotesCtrl", ['$scope', '$modal', function($scope, $modal) {
     this.navbarCollapsed = true;
     var _this = this;
-    //TODO: Bind data to Firebase
     this.items = [];
 
   this.showAddQuoteDialog = function(movieQuoteFromRow) {
@@ -15,7 +14,7 @@
       controllerAs : "insertModal"
     });
     modalInstance.result.then(function(movieQuoteFromModal) {
-      //TODO: Add movieQuote to Firebase
+      _this.items.push(movieQuoteFromModal);
       _this.isEditing = false;
     });
   };
@@ -29,13 +28,9 @@
         resolve : {
           movieQuote : function() {
             return {
-              get :
+              get:
                 function() {
                   return movieQuoteFromRow;
-              },
-              save :
-                function(movieQuoteFromModal) {
-                  //TODO: save movieQuote to Firebase
               }
             };
           }
@@ -59,7 +54,13 @@
         }
       });
       modalInstance.result.then(function(movieQuoteFromModal) {
-        //TODO: Delete the moviequote from Firebase
+        for (var i = 0; i < _this.items.length; i++) {
+          var mq = _this.items[i];
+          if (mq.quote === movieQuoteFromModal.quote && mq.movie === movieQuoteFromModal.movie) {
+            _this.items.splice(i, 1);
+            break;
+          }
+        }
         _this.isEditing = false;
       });
     };

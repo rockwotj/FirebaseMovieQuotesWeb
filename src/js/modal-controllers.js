@@ -25,7 +25,6 @@
     this.moviequote = movieQuote.get();
     var _this = this;
     this.saveQuote = function() {
-      movieQuote.save(_this.moviequote);
     };
 
     this.done = function () {
