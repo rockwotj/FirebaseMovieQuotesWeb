@@ -34,4 +34,10 @@ gulp.task('favicon', function() {
              .pipe(gulp.dest('dist'));
 });
 
+gulp.task('watch', function() {
+  gulp.watch('src/**/*.html', ['html']);
+  gulp.watch('src/css/*.css', ['css']);
+  gulp.watch('src/js/*.js', ['js']);
+});
+
 gulp.task('default', ['html', 'css', 'js', 'favicon']);

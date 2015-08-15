@@ -5,6 +5,7 @@
     this.navbarCollapsed = true;
     var _this = this;
     this.items = [];
+    console.log('Hello, gulp watch');
 
   this.showAddQuoteDialog = function(movieQuoteFromRow) {
     this.navbarCollapsed = true;
