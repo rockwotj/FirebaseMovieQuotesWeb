@@ -1,3 +1,7 @@
+# OUTDATED
+
+Checkout http://www.rosebotics.org/courses if you're interested, all this content has been merged into courses at Rose-Hulman
+
 # FirebaseMovieQuotesWeb
 This was created as a [follow along lesson](https://docs.google.com/presentation/d/1jB9wdoEDmbB_MxSlWrl1Bs65JLuasKBzfXumtoKd5Yw/edit?usp=sharing).
 
